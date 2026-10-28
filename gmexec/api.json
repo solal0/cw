@@ -1,74 +1,21 @@
 [
   {
-    "category": "Execution",
+    "category": "Utility",
     "functions": [
       {
-        "name": "GmExec.Execute",
-        "signature": "GmExec.Execute(code)",
-        "description": "Executes a Lua script.",
-        "parameters": [
-          {
-            "name": "code",
-            "type": "string",
-            "description": "Lua source code to execute."
-          }
-        ],
-        "returns": "nil"
-      },
-      {
-        "name": "GmExec.GetVersion",
-        "signature": "GmExec.GetVersion()",
-        "description": "Returns the current GmExec version.",
-        "parameters": [],
-        "returns": "string"
+        "name": "Hook.Add",
+        "description": "Creates a safe and secure hook.",
+        "code": "gmexec.hook.Add(...)"
       }
     ]
   },
   {
-    "category": "Console",
+    "category": "GmExec",
     "functions": [
       {
-        "name": "GmExec.Print",
-        "signature": "GmExec.Print(message)",
-        "description": "Prints a message to the GmExec console.",
-        "parameters": [
-          {
-            "name": "message",
-            "type": "any",
-            "description": "Message to display."
-          }
-        ],
-        "returns": "nil"
-      },
-      {
-        "name": "GmExec.ClearConsole",
-        "signature": "GmExec.ClearConsole()",
-        "description": "Clears the GmExec console.",
-        "parameters": [],
-        "returns": "nil"
-      }
-    ]
-  },
-  {
-    "category": "Utilities",
-    "functions": [
-      {
-        "name": "GmExec.Notify",
-        "signature": "GmExec.Notify(title, message)",
-        "description": "Displays a notification in the GmExec interface.",
-        "parameters": [
-          {
-            "name": "title",
-            "type": "string",
-            "description": "Notification title."
-          },
-          {
-            "name": "message",
-            "type": "string",
-            "description": "Notification content."
-          }
-        ],
-        "returns": "nil"
+        "name": "GetVersion()",
+        "description": "Returns the current version.",
+        "code": "gmexec.GetVersion()"
       }
     ]
   }
