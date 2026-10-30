@@ -1,22 +1,39 @@
 [
   {
-    "category": "Utility",
+    "category": "Hook",
     "functions": [
-      {
-        "name": "Hook.Add",
-        "description": "Creates a safe and secure hook.",
-        "code": "gmexec.hook.Add(...)"
-      }
+      {"name": "Add(event, id, callback)", "description": "Registers a callback for an event. Supported game events are automatically connected to the game hook dispatcher.", "code": "gmexec.hook.Add(\"Think\", \"my_hook\", function() end)"},
+      {"name": "Once(event, id, callback)", "description": "Registers a callback that is removed after its first execution.", "code": "gmexec.hook.Once(\"Think\", \"my_once\", function() end)"},
+      {"name": "Remove(event, id)", "description": "Removes a previously registered callback.", "code": "gmexec.hook.Remove(\"Think\", \"my_hook\")"},
+      {"name": "Exists(event, id)", "description": "Returns whether a callback with the given event and identifier is registered.", "code": "gmexec.hook.Exists(\"Think\", \"my_hook\")"},
+      {"name": "Clear(event)", "description": "Removes all GmExec callbacks registered for the specified event.", "code": "gmexec.hook.Clear(\"Think\")"},
+      {"name": "Run(event, ...)", "description": "Dispatches an event to GmExec callbacks and returns the first non-nil callback result, if any.", "code": "gmexec.hook.Run(\"MyEvent\", ...)"},
+      {"name": "Call(event, gamemode, ...)", "description": "Dispatches an event and falls back to the matching gamemode method if no callback returns a non-nil value.", "code": "gmexec.hook.Call(\"MyEvent\", GAMEMODE, ...)"}
+    ]
+  },
+  {
+    "category": "Event",
+    "functions": [
+      {"name": "On(event, id, callback)", "description": "Registers a callback in the native event registry.", "code": "gmexec.event.On(\"MyEvent\", \"my_listener\", function(...) end)"},
+      {"name": "Once(event, id, callback)", "description": "Registers a native event callback that runs once.", "code": "gmexec.event.Once(\"MyEvent\", \"my_listener\", function(...) end)"},
+      {"name": "Off(event, id)", "description": "Removes a native event callback by identifier.", "code": "gmexec.event.Off(\"MyEvent\", \"my_listener\")"},
+      {"name": "Has(event, id)", "description": "Returns whether the specified native event callback exists.", "code": "gmexec.event.Has(\"MyEvent\", \"my_listener\")"},
+      {"name": "Clear(event)", "description": "Removes all native callbacks for the specified event.", "code": "gmexec.event.Clear(\"MyEvent\")"},
+      {"name": "Emit(event, ...)", "description": "Dispatches an event to callbacks registered in the native event registry.", "code": "gmexec.event.Emit(\"MyEvent\", ...)"}
+    ]
+  },
+  {
+    "category": "Bridge",
+    "functions": [
+      {"name": "BindGameEvent(event)", "description": "Connects a game event to the GmExec native event dispatcher when the game hook system is available.", "code": "gmexec.hook.BindGameEvent(\"Think\")"},
+      {"name": "RepairBridges()", "description": "Checks registered game-event relays and re-registers any missing relays.", "code": "gmexec.hook.RepairBridges()"},
+      {"name": "BridgeStatus(event)", "description": "Returns whether a game-event relay is present and whether it matches the expected relay.", "code": "local present, valid = gmexec.hook.BridgeStatus(\"Think\")"}
     ]
   },
   {
     "category": "GmExec",
     "functions": [
-      {
-        "name": "GetVersion()",
-        "description": "Returns the current version.",
-        "code": "gmexec.GetVersion()"
-      }
+      {"name": "version", "description": "Contains the current native API version string.", "code": "gmexec.version"}
     ]
   }
 ]
